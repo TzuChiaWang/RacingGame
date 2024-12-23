@@ -164,7 +164,7 @@ public class RacingGame extends JPanel implements ActionListener, MouseMotionLis
             randomY = -500 - (int) (Math.random() * 1600);
             overlap = false;
             obstacleImage = obstacleImages.get((int) (Math.random() * obstacleImages.size()));
-            Rectangle newObstacleBounds = new Rectangle(randomX, randomY, 50, 115);
+            Rectangle newObstacleBounds = new Rectangle(randomX, randomY, 50, 150);
             for (Car car : opponentCars) {
                 if (newObstacleBounds
                         .intersects(new Rectangle(car.getX(), car.getY(), car.getWidth(), car.getHeight()))) {
@@ -173,7 +173,7 @@ public class RacingGame extends JPanel implements ActionListener, MouseMotionLis
                 }
             }
         } while (overlap);
-        Car newObstacle = new Car(randomX, randomY, 50, 115, obstacleImage);
+        Car newObstacle = new Car(randomX, randomY, 50, 150, obstacleImage);
 
         // 根據圖片設置不同的高度
         if (obstacleImage == obstacleImages.get(2)) {
@@ -192,7 +192,7 @@ public class RacingGame extends JPanel implements ActionListener, MouseMotionLis
             randomX = OBSTACLE_X_POSITIONS[(int) (Math.random() * OBSTACLE_X_POSITIONS.length)];
             randomY = -500 - (int) (Math.random() * 1600);
             overlap = false;
-            Rectangle newPowerUpBounds = new Rectangle(randomX, randomY, 50, 115);
+            Rectangle newPowerUpBounds = new Rectangle(randomX, randomY, 50, 150);
             for (Car car : opponentCars) {
                 if (newPowerUpBounds
                         .intersects(new Rectangle(car.getX(), car.getY(), car.getWidth(), car.getHeight()))) {
