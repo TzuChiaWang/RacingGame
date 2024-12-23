@@ -161,10 +161,10 @@ public class RacingGame extends JPanel implements ActionListener, MouseMotionLis
         Image obstacleImage;
         do {
             randomX = OBSTACLE_X_POSITIONS[(int) (Math.random() * OBSTACLE_X_POSITIONS.length)];
-            randomY = -600 - (int) (Math.random() * 1600);
+            randomY = -500 - (int) (Math.random() * 1600);
             overlap = false;
             obstacleImage = obstacleImages.get((int) (Math.random() * obstacleImages.size()));
-            Rectangle newObstacleBounds = new Rectangle(randomX, randomY, 50, 150);
+            Rectangle newObstacleBounds = new Rectangle(randomX, randomY, 50, 115);
             for (Car car : opponentCars) {
                 if (newObstacleBounds
                         .intersects(new Rectangle(car.getX(), car.getY(), car.getWidth(), car.getHeight()))) {
@@ -173,7 +173,16 @@ public class RacingGame extends JPanel implements ActionListener, MouseMotionLis
                 }
             }
         } while (overlap);
-        opponentCars.add(new Car(randomX, randomY, 50, 150, obstacleImage));
+        Car newObstacle = new Car(randomX, randomY, 50, 115, obstacleImage);
+
+        // 根據圖片設置不同的高度
+        if (obstacleImage == obstacleImages.get(2)) {
+            newObstacle.setHeight(200); // 設置較長的高度
+        }
+        if (obstacleImage == obstacleImages.get(4)) {
+            newObstacle.setHeight(170); // 設置較短的高度
+        }
+        opponentCars.add(newObstacle);
     }
 
     private void addNewPowerUp() {
@@ -181,9 +190,9 @@ public class RacingGame extends JPanel implements ActionListener, MouseMotionLis
         boolean overlap;
         do {
             randomX = OBSTACLE_X_POSITIONS[(int) (Math.random() * OBSTACLE_X_POSITIONS.length)];
-            randomY = -600 - (int) (Math.random() * 1600);
+            randomY = -500 - (int) (Math.random() * 1600);
             overlap = false;
-            Rectangle newPowerUpBounds = new Rectangle(randomX, randomY, 50, 150);
+            Rectangle newPowerUpBounds = new Rectangle(randomX, randomY, 50, 115);
             for (Car car : opponentCars) {
                 if (newPowerUpBounds
                         .intersects(new Rectangle(car.getX(), car.getY(), car.getWidth(), car.getHeight()))) {

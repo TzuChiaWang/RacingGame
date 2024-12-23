@@ -43,7 +43,7 @@ public class Car {
 
     public boolean intersects(Car other) {
         // 縮小邊界以降低碰撞檢測的敏感度
-        int shrinkAmount = 2; // 可以根據需要調整
+        int shrinkAmount = 1; // 可以根據需要調整
         Rectangle r1 = new Rectangle(x + shrinkAmount, y + shrinkAmount, width - 2 * shrinkAmount,
                 height - 2 * shrinkAmount);
         Rectangle r2 = new Rectangle(other.x + shrinkAmount, other.y + shrinkAmount, other.width - 2 * shrinkAmount,
@@ -77,6 +77,10 @@ public class Car {
 
     public int getHeight() {
         return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public void KeymoveLeft() {
